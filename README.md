@@ -3,7 +3,7 @@ Esta es una api de Geocodificación, para que, con las coordenadas Latitud y Lon
 
 Se trata de un script en PHP para retornar un JSON con las localidades Chilenas cercanas a las coordenadas antes especificadas en los parametros de la URL, funciona a través del método GET.
 
-Esto es utilizado por <a href="http://chilealerta.com">Chile Alerta</a> e <a href="http://sismologia.net">INSIMU</a> para generar informes sísmicos con sus respectivas referencias geográficas (especialmente el parametro "Reference" del json).
+Esto es utilizado por <a href="http://chilealerta.com">Chile Alerta</a> e <a href="http://sismologia.net">INSIMU</a> para generar informes sísmicos con sus respectivas referencias geográficas (especialmente el parametro "Reference" del json) y tambien por <a href="http://mascotasperdidas.cl/">Mascotas Perdidas Chile</a> para la organización de Ubicaciones.
 
 Ejemplo:
 ```
