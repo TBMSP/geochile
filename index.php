@@ -37,8 +37,10 @@ $geo=json_decode(file_get_contents("CL.json"),true);//carga el archivo CL.json y
 $max=count($geo);//obtiene la cantidad de items del array "geo"
 $lat=$_GET['lat'];//obtiene el parametro "lat" especificado en la URL
 $lon=$_GET['lon'];//obtiene el parametro "lon" especificado en la URL
+if(isset($_GET['max'])){
 $lmt=intval($_GET['max']);//obtiene el parametro "max" especificado opcionalmente en la URL
 if($lmt<=$max){$max=$lmt;}//verifica que la cantidad de items que se devolveran no sea mayor que la cantidad de items ya almacenados en el array
+}
 $ref=array('Latitude'=>$lat,'Longitude'=>$lon);//se guarda esto como referencia, aqui se almacena los parametros "lay" y "lon" de la URL
 foreach($geo as $key=>$row){
 $distance=round(Distance($row,$ref),1);//se calcula y se redondea la distancia entre las localidades del array y la referencia en kilometros
@@ -67,7 +69,7 @@ $lon1=$a["Longitude"];
 $lat2=$b["Latitude"];
 $lon2=$b["Longitude"];
 $theta=$lon1-$lon2;
-$dist=sin(deg2rad($lat1))*sin(deg2rad($lat2))+ cos(deg2rad($lat1))*cos(deg2rad($lat2))*cos(deg2rad($theta));
+$dist=sin(deg2rad($lat1))*sin(deg2rad($lat2))+cos(deg2rad($lat1))*cos(deg2rad($lat2))*cos(deg2rad($theta));
 $dist=acos($dist);
 $dist=rad2deg($dist);
 $miles=$dist*60*1.1515;
