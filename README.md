@@ -7,7 +7,7 @@ Esto es utilizado por <a href="http://chilealerta.com">Chile Alerta</a> e <a hre
 
 Ejemplo:
 ```
-http://ejemplo.cl/?lat=-33&lon=-71&max=10
+localhost/?lat=-33&lon=-71&max=10
 ```
 Resultado:
 
