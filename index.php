@@ -58,8 +58,17 @@ $data=[];//se crea un array vacio
 foreach($geo as $key=>$row){
 $data[$key]=$row['Distance'];//se almacena el parametro "Distance" de todos los items del array en el nuevo array vacio
 }
-array_multisort($data,SORT_ASC,$geo);//el array "geo" y "data" se ordenan
-array_splice($geo,$max,count($geo));//el array "geo" se ordena de acuerdo al parametro "Distance" segun el array "data"
+array_multisort($data,SORT_ASC,$geo);//el array "geo" se ordena de acuerdo al parametro "Distance" segun el array "data"
+array_splice($geo,$max,count($geo));//se limita el array "geo" (filtro "max")
+if(isset($_GET['radiuskm'])){//verifica que el parametro "radiuskm" existe en la URL
+$data=[];//se crea un array vacio
+foreach($geo as $key=>$row){
+$rkm=floatval($row['Distance']);//se obtiene la distancia del array
+if($rkm>floatval($_GET['radiuskm'])){break;}//si la distancia supera a "radiuskm" entonces se detiene el loop
+$data[$key]=$row;
+}
+$geo=$data;
+}
 header('Content-Type: application/json');//se le dice al php que lo que va a entregar es json
 echo json_encode($geo);//se imprime la informacion en json
 }
