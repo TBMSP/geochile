@@ -1,7 +1,7 @@
 # GeoChile
 Esta es una api de Geocodificación, para que, con las coordenadas Latitud y Longitud se entregue una lista de ciudades cercanas.
 
-Se trata de un script en PHP para retornar un JSON con las localidades Chilenas cercanas a las coordenadas antes especificadas en los parametros de la URL, funciona a través del método GET.
+Se trata de un script en PHP para retornar un JSON con las localidades Chilenas cercanas a las coordenadas antes especificadas en los parametros de la URL, funciona a través del método POST con un body JSON.
 
 Esto es utilizado por <a href="http://chilealerta.com">Chile Alerta</a> e <a href="http://sismologia.net">INSIMU</a> para generar informes sísmicos con sus respectivas referencias geográficas (especialmente el parametro "Reference" del json) y tambien por <a href="http://mascotasperdidas.cl/">Mascotas Perdidas Chile</a> para la organización de Ubicaciones.
 
@@ -10,20 +10,20 @@ Esto es utilizado por <a href="http://chilealerta.com">Chile Alerta</a> e <a hre
 # Parametros
 ------------------------------------
 
-**lat**:<br />(float) Es la Latitud de la coordenada.
+**lat**: (float) Es la Latitud.
 
-**lon**:<br />(float) Es la Longitud de la coordenada.
+**lng**: (float) Es la Longitud.
 
-**max**:<br />(int) Este es un filtro, es la cantidad máxima de ítem a devolver (opcional).
+**limit**: (int) Filtro de la cantidad máxima de ítems a devolver (opcional).
 
-**radiuskm**:<br />(float) Este es un filtro, el radio máximo de distancia, puede reducir la cantidad máxima de acuerdo a que si el ítem a devolver esta dentro del radio máximo seleccionado en kilometros (opcional).
+**radiuskm**: (float) Este es un filtro, el radio máximo de distancia, puede reducir la cantidad máxima de acuerdo a que si el ítem a devolver esta dentro del radio máximo seleccionado en kilometros (opcional).
 
 ---
 
 # Ejemplo:
 ------------------------------------
 ```
-localhost/?lat=-33&lon=-71&max=10
+curl -d '{"lat":"-31", "lng":"-71", "country":"CL", "limit":10}' -H "Content-Type: application/json" -X POST http://localhost/
 ```
 Resultado:
 
