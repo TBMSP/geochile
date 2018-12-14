@@ -24,7 +24,7 @@ header('Access-Control-Max-Age: 86400');
 }
 if($_SERVER['REQUEST_METHOD']=='OPTIONS'){
 if(isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
-header("Access-Control-Allow-Methods: GET, POST, OPTIONS");         
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 if(isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
 header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
 exit(0);
@@ -33,7 +33,7 @@ exit(0);
 //CORS>
 
 if(isset($_GET['lat'])&&isset($_GET['lon'])){//verifica que "lat" y "lon" esten especificados en la URL
-$geo=json_decode(file_get_contents("CL.json"),true);//carga el archivo CL.json y lo almacena en un array
+$geo=json_decode(file_get_contents("localities/CL.json"),true);//carga el archivo CL.json y lo almacena en un array
 $max=count($geo);//obtiene la cantidad de items del array "geo"
 $lat=$_GET['lat'];//obtiene el parametro "lat" especificado en la URL
 $lon=$_GET['lon'];//obtiene el parametro "lon" especificado en la URL
@@ -72,7 +72,7 @@ $geo=$data;
 header('Content-Type: application/json');//se le dice al php que lo que va a entregar es json
 echo json_encode($geo);//se imprime la informacion en json
 }
-function Distance($a,$b){ 	
+function Distance($a,$b){
 $lat1=$a["Latitude"];
 $lon1=$a["Longitude"];
 $lat2=$b["Latitude"];
